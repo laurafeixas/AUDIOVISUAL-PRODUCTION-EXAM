@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Producció Audiovisual — Guia d'Estudi Interactiva</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header-content">
+          <h1>🎬 Producció Audiovisual</h1>
+          <p>Guia d'estudi completa i interactiva</p>
+        </div>
+      </header>
+
+      <!-- LANGUAGE SELECTOR -->
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="ca">Català</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+
+      <!-- NAVIGATION TABS -->
+      <nav class="tabs-navigation">
+        <div class="tabs-container">
+          <button class="tab-btn active" data-tab="lessons">📚 Temari</button>
+          <button class="tab-btn" data-tab="cards">📇 Flashcards</button>
+          <button class="tab-btn" data-tab="quiz">🧪 Test</button>
+          <button class="tab-btn" data-tab="apunts">📖 Apunts</button>
+          <button class="tab-btn" data-tab="notes">📝 Notes</button>
+          <button class="tab-btn" data-tab="settings">⚙️ Preferències</button>
+        </div>
+      </nav>
+
+      <!-- MAIN CONTENT -->
+      <main class="content">
+        <!-- LESSONS SECTION -->
+        <section id="lessons" class="tab-content active">
+          <div class="section-header">
+            <h2 data-i18n="lessons">Temari Complet</h2>
+            <p data-i18n="lessonsDesc">
+              Aprèn tots els temes per a l'examen de producció audiovisual
+            </p>
+          </div>
+
+          <div class="lessons-nav">
+            <button class="lesson-btn active" data-lesson="teams">
+              Equips & Rols
+            </button>
+            <button class="lesson-btn" data-lesson="preproduction">
+              Preproducció
+            </button>
+            <button class="lesson-btn" data-lesson="documents">
+              Documents AD
+            </button>
+            <button class="lesson-btn" data-lesson="breakdown">
+              Script Breakdown
+            </button>
+            <button class="lesson-btn" data-lesson="folder">
+              Production Folder
+            </button>
+            <button class="lesson-btn" data-lesson="budget">Pressupost</button>
+            <button class="lesson-btn" data-lesson="howtoread">
+              Com Llegir
+            </button>
+            <button class="lesson-btn" data-lesson="productionprocess">
+              Processos
+            </button>
+          </div>
+
+          <div class="lessons-content" id="lessonsContent"></div>
+        </section>
+
+        <!-- FLASHCARDS SECTION -->
+        <section id="cards" class="tab-content active">
+          <div class="section-header">
+            <h2>Flashcards</h2>
+            <p>
+              Practica els conceptes clau. Clica les targetes per revelar les
+              respostes.
+            </p>
+          </div>
+
+          <div class="controls">
+            <div class="search-box">
+              <input
+                type="text"
+                id="cardSearch"
+                placeholder="🔍 Buscar flashcards..."
+                class="search-input"
+              />
+            </div>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-category="all">
+                Totes
+              </button>
+              <button class="filter-btn" data-category="rols">Rols</button>
+              <button class="filter-btn" data-category="documents">
+                Documents
+              </button>
+              <button class="filter-btn" data-category="timing">Timing</button>
+              <button class="filter-btn" data-category="colors">Colors</button>
+              <button class="filter-btn" data-category="scriptreading">
+                Script
+              </button>
+              <button class="filter-btn" data-category="breakdown">
+                Breakdown
+              </button>
+              <button class="filter-btn" data-category="budget">Budget</button>
+              <button class="filter-btn" data-category="onset">On Set</button>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-label">Total:</span>
+              <span class="stat-value" id="totalCards">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Estudiades:</span>
+              <span class="stat-value" id="masteredCards">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Pendents:</span>
+              <span class="stat-value" id="pendingCards">0</span>
+            </div>
+          </div>
+
+          <div class="flashcard-grid" id="cardsGrid"></div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz" class="tab-content">
+          <div class="section-header">
+            <h2>Test d'Examen</h2>
+            <p>Respon les preguntes i comprova el teu nivell de preparació.</p>
+          </div>
+
+          <div class="quiz-controls">
+            <div class="difficulty-selector">
+              <label>Dificultat:</label>
+              <select id="difficultySelect" class="selector">
+                <option value="all">Totes les preguntes</option>
+                <option value="easy">Fàcil</option>
+                <option value="medium">Mitjana</option>
+                <option value="hard">Difícil</option>
+              </select>
+            </div>
+            <button id="resetQuizBtn" class="btn btn-secondary">
+              ↻ Reiniciar
+            </button>
+          </div>
+
+          <div class="score-container">
+            <div class="score-bar">
+              <div class="score-label">Puntuació</div>
+              <div class="score-display">
+                <span id="scoreNum">0</span> / <span id="scoreDen">0</span>
+              </div>
+              <div class="score-percentage" id="scorePercentage"></div>
+            </div>
+          </div>
+
+          <div id="quizContainer" class="quiz-questions"></div>
+        </section>
+
+        <!-- APUNTS SECTION -->
+        <section id="apunts" class="tab-content">
+          <div class="section-header">
+            <h2>📖 Apunts Complets</h2>
+            <p>
+              Tots els apunts organitzats per temes amb informació detallada.
+            </p>
+          </div>
+
+          <div class="apunts-nav">
+            <button class="apunts-btn active" data-apunt="howtoread">
+              Com Llegir un Script
+            </button>
+            <button class="apunts-btn" data-apunt="breakdown">
+              The Breakdown
+            </button>
+            <button class="apunts-btn" data-apunt="budget">
+              Pressupost i Estructura
+            </button>
+            <button class="apunts-btn" data-apunt="folder">
+              Production Folder
+            </button>
+            <button class="apunts-btn" data-apunt="filmproduction">
+              Film Production Notes
+            </button>
+          </div>
+
+          <div class="apunts-content" id="apuntsContent"></div>
+        </section>
+
+        <!-- NOTES SECTION -->
+        <section id="notes" class="tab-content">
+          <div class="section-header">
+            <h2>Les Meves Notes</h2>
+            <p>Pren notes mentre estudies i guarda-les localment.</p>
+          </div>
+
+          <div class="notes-controls">
+            <textarea
+              id="notesTextarea"
+              class="notes-textarea"
+              placeholder="Escriu les teves notes aquí..."
+            ></textarea>
+            <div class="notes-buttons">
+              <button class="btn btn-primary" onclick="saveNotes()">
+                💾 Guardar
+              </button>
+              <button class="btn btn-secondary" onclick="clearNotes()">
+                🗑️ Netejar
+              </button>
+            </div>
+          </div>
+
+          <div class="notes-status" id="notesStatus"></div>
+        </section>
+
+        <!-- SETTINGS SECTION -->
+        <section id="settings" class="tab-content">
+          <div class="section-header">
+            <h2>Preferències d'Estudi</h2>
+            <p>Personalitza la teva experiència d'aprenentatge.</p>
+          </div>
+
+          <div class="settings-grid">
+            <div class="setting-group">
+              <label class="setting-label">
+                <input type="checkbox" id="darkMode" class="setting-input" />
+                Mode fosc
+              </label>
+              <p class="setting-description">
+                Activa el mode fosc per a l'estudi nocturn
+              </p>
+            </div>
+
+            <div class="setting-group">
+              <label class="setting-label">
+                <input type="checkbox" id="soundToggle" class="setting-input" />
+                Efectes de so
+              </label>
+              <p class="setting-description">Sona quan completes preguntes</p>
+            </div>
+
+            <div class="setting-group">
+              <label class="setting-label">
+                <input
+                  type="checkbox"
+                  id="autoFlip"
+                  class="setting-input"
+                  checked
+                />
+                Volteig automàtic
+              </label>
+              <p class="setting-description">
+                Voltejar flashcards automàticament
+              </p>
+            </div>
+
+            <div class="setting-group">
+              <label class="setting-label">
+                Temps d'estudi: <span id="sessionTime">0</span> min
+              </label>
+              <p class="setting-description">
+                Temps que portes estudiant aquesta sessió
+              </p>
+            </div>
+          </div>
+
+          <div class="danger-zone">
+            <h3>⚠️ Zona de Perill</h3>
+            <button class="btn btn-danger" onclick="resetAllProgress()">
+              Esborrar tot el Progres
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <p>Guia d'estudi de Producció Audiovisual — 2026</p>
+        <p class="footer-tip">
+          💡 Conseil: Estudia 20 minuts al dia per a millors resultats
+        </p>
+      </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
